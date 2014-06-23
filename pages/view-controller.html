@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html ng-app>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<script type="text/javascript" src="../js/angular.js"></script>
+<script type="text/javascript" src="../js/view-controller.js"></script>
+<title>View Controller</title>
+</head>
+<body>
+	<div  ng-controller = "SimpleController">
+	
+		<div>{{test}}
+		<h3 align="center">Filter Section</h3>
+			<table cellspacing = "2" cellpadding = "2" border = "0" align="center" width="50%">
+				
+				<tr >
+					<td>
+						<span>Name</span>&nbsp;
+						<input type="text" ng-model = "fname" /> 
+					</td>
+					<td>
+						<span>City</span>&nbsp;
+						<input type="text" ng-model = "fcity" /> 
+					</td>
+					<td>
+						<span>Pin Code</span>&nbsp;
+						<input type="text" ng-model = "fpin" /> 
+					</td>
+				</tr>
+			</table>
+		
+			
+		</div>
+		
+		<div >
+			<h3 align="center">Data Section</h3>
+			<table cellspacing = "2" cellpadding = "2" border = "0" align="center" width="50%">
+				<tr >
+					<th align="left">Name</th><th align="left">City</th><th align="left">Pin Code</th>
+				</tr>
+				<tr ng-repeat="cust in customers | filter:fname | filter:fcity | filter:fpin | orderBy: 'name'">
+					<td>{{cust.name | uppercase}}</td><td>{{cust.city | uppercase}}</td><td>{{cust.pin}}</td>
+				</tr>
+			</table>
+		</div>
+			<input type="text" ng-model="test" />
+			<button ng-click="testButton()">Click</button>
+	</div>
+	
+</body>
+</html>
